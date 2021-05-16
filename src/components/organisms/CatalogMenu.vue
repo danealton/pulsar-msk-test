@@ -1,9 +1,15 @@
 <template>
   <div :class="$style.container">
-    <div>{{ isShownCatalogMenu ? 'catalog-menu-shown' : 'catalog-menu-close' }}</div>
-    <div>
-      <button @click="onClickToCloseCatalogMenu">Close</button>
-    </div>
+    <transition :name="$style.fade">
+      <div v-if="isShownCatalogMenu">
+        <div>
+          catalog-menu-shown
+        </div>
+        <div>
+          <button @click="onClickToCloseCatalogMenu">Close</button>
+        </div>
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -42,4 +48,13 @@ export default {
 
 <style lang="sass" module>
   .container
+
+  .fade
+    &:global(-enter-active),
+    &:global(-leave-active)
+      transition: opacity 0.5s ease
+
+    &:global(-enter),
+    &:global(-leave-to)
+      opacity: 0
 </style>
