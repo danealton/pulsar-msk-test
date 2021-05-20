@@ -18,5 +18,6 @@ module.exports = {
       js: 'never',
       vue: 'never',
     }],
+    'arrow-parens': ['error', 'as-needed'],
   },
 };
